@@ -36,7 +36,7 @@ namespace ConsoleApp.Business.Services
                 throw new NotFoundException($"{company} - doesn't exist");
             }
 
-            if (departmentLimit >= 2)
+            if (departmentLimit < 2)
             {
                 throw new LengthException(Helper.Errors["LengthException"]);
             }

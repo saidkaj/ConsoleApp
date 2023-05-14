@@ -14,11 +14,15 @@
     <None Remove="Services\" />
     <None Remove="Exceptions\" />
     <None Remove="Helpers\" />
+    <None Remove="DTOs\" />
+    <None Remove="DTOs\EmployeeDTO\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
     <Folder Include="Exceptions\" />
     <Folder Include="Helpers\" />
+    <Folder Include="DTOs\" />
+    <Folder Include="DTOs\EmployeeDTO\" />
   </ItemGroup>
 </Project>

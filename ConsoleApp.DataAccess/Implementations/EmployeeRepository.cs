@@ -5,7 +5,7 @@ using ConsoleApp.DataAccess.Contexts;
 
 namespace ConsoleApp.DataAccess.Implementations
 {
-    public class StudentRepository : IRepository<Employee>
+    public class EmployeeRepository : IRepository<Employee>
     {
         public void Add(Employee entity)
         {
@@ -42,6 +42,11 @@ namespace ConsoleApp.DataAccess.Implementations
         public List<Employee> GetAllByName(string name)
         {
             return DbContext.Employees.FindAll(emp => emp.Name == name);
+        }
+
+        public List<Employee> GetEmployeeByDepartmentId(int id)
+        {
+            return DbContext.Employees.FindAll(emp => emp.DepartmentId == id);
         }
     }
 }

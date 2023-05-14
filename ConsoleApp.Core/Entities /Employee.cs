@@ -25,10 +25,11 @@ namespace ConsoleApp.Core.Entities
 			_id++;
 		}
 
-		public Employee(string name, string surname) : this()
+		public Employee(string name, string surname, int departmentId) : this()
 		{
 			Name = name;
 			Surname = surname;
+			DepartmentId = departmentId;
 		}
 
 	}
