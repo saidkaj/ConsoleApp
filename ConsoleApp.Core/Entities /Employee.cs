@@ -6,12 +6,17 @@ namespace ConsoleApp.Core.Entities
 	public class Employee : IEntity
 	{
 		private static int _id;
+
 		public int EmployeeId { get; }
 
 		public string Name { get; set; }
+
 		public string Surname { get; set; }
+
 		public double Salary { get; set; }
+
 		public int CompanyId { get; set; }
+
 		public int DepartmentId { get; set; }
 
 		public Employee()

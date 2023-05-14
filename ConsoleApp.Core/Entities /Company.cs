@@ -6,6 +6,7 @@ namespace ConsoleApp.Core.Entities
 	public class Company : IEntity
 	{
 		private static int _id;
+
 		public int CompanyId { get;}
 
 		public string CompanyName { get; set; }

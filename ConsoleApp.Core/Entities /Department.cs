@@ -6,10 +6,13 @@ namespace ConsoleApp.Core.Entities
 	public class Department : IEntity
 	{
 		private static int _id;
+
 		public int DepartmentId { get; }
 
 		public string DepartmentName { get; set; }
+
 		public int EmployeeLimit { get; set; }
+
 		public int CompanyId { get; set; }
 
 		public Department()
@@ -18,9 +21,10 @@ namespace ConsoleApp.Core.Entities
 			_id++;
 		}
 
-		public Department(string name) : this()
+		public Department(string name, int limit) : this()
 		{
 			DepartmentName = name;
+			EmployeeLimit = limit;
 		}
 
 	}
