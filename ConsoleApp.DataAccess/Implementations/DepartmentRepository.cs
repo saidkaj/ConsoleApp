@@ -34,7 +34,15 @@ namespace ConsoleApp.DataAccess.Implementations
             return DbContext.Departments;
         }
 
-       
+        public Department? GetByName(string name)
+        {
+            return DbContext.Departments.Find(emp => emp.DepartmentName == name);
+        }
+
+        public List<Department> GetAllByName(string name)
+        {
+            return DbContext.Departments.FindAll(emp => emp.DepartmentName == name); ;
+        }
     }
 }
 

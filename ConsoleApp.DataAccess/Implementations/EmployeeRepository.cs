@@ -34,7 +34,15 @@ namespace ConsoleApp.DataAccess.Implementations
             return DbContext.Employees;
         }
 
-        
+        public Employee? GetByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Employee> GetAllByName(string name)
+        {
+            return DbContext.Employees.FindAll(emp => emp.Name == name);
+        }
     }
 }
 

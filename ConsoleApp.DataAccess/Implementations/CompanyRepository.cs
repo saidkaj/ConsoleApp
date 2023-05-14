@@ -28,12 +28,20 @@ namespace ConsoleApp.DataAccess.Implementations
             return DbContext.Companies.Find(comp => comp.CompanyId == id);
         }
 
+        public Company? GetByName(string company)
+        {
+            return DbContext.Companies.Find(comp => comp.CompanyName == company);
+        }
+
         public List<Company> GetAll()
         {
             return DbContext.Companies;
         }
 
-        
+        public List<Company> GetAllByName(string name)
+        {
+            return DbContext.Companies.FindAll(compn => compn.CompanyName == name);
+        }
     }
 }
 

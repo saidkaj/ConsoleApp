@@ -21,10 +21,11 @@ namespace ConsoleApp.Core.Entities
 			_id++;
 		}
 
-		public Department(string name, int limit) : this()
+		public Department(string name, int limit, int companyId) : this()
 		{
 			DepartmentName = name;
 			EmployeeLimit = limit;
+			CompanyId = companyId;
 		}
 
 	}

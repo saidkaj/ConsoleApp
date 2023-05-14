@@ -14,6 +14,10 @@ namespace ConsoleApp.DataAccess.Interfaces
 
 		List<T> GetAll();
 
+		T? GetByName(string name);
+
+		List<T> GetAllByName(string name);
+
 
 	}
 }
