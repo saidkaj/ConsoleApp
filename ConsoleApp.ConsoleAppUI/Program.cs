@@ -7,7 +7,6 @@ DepartmentService departmentService = new DepartmentService();
 CompanyService companyService = new CompanyService();
 
 
-Console.WriteLine("Banking: ");
 
 
 Console.WriteLine("Welcome ");
@@ -28,6 +27,12 @@ int empMenuInput;
 int depMenuInput;
 int compMenuInput;
 EmployeeCreateDto dto = new("Said", "Jahangirov", "It", 110);
+
+companyService.Create("Abb", 30);
+foreach (var companyt in companyService.GetAll())
+{
+    Console.WriteLine($"Company: {companyt.CompanyName} \nCompanyId: {companyt.CompanyId}");
+}
 
 bool check = int.TryParse(Console.ReadLine(), out input);
 if (!check)
