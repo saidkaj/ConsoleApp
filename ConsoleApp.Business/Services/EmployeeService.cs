@@ -5,8 +5,6 @@ using ConsoleApp.Business.Helpers;
 using ConsoleApp.Business.Interfaces;
 using ConsoleApp.Core.Entities;
 using ConsoleApp.DataAccess.Implementations;
-using ConsoleApp.Business.Helpers;
-using ConsoleApp.Business.Interfaces;
 
 namespace ConsoleApp.Business.Services
 {
@@ -68,7 +66,7 @@ namespace ConsoleApp.Business.Services
 
         public List<Employee> GetAll(int skip, int take)
         {
-            throw new NotImplementedException();
+            return employeeRepository.GetAll();
         }
 
         public List<Employee> GetEmployeeByDepartmentId(int id)

@@ -52,7 +52,7 @@ namespace ConsoleApp.Business.Services
 
         public List<Department> GetAll()
         {
-            throw new NotImplementedException();
+            return _departmentRepository.GetAll();
         }
 
         public Department GetById(int id)

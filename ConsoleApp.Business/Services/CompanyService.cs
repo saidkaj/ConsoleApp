@@ -44,7 +44,7 @@ namespace ConsoleApp.Business.Services
 
         public List<Company> GetAll()
         {
-            throw new NotImplementedException();
+            return _companyRepository.GetAll();
         }
 
         public Company GetById(int id)
