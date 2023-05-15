@@ -37,9 +37,16 @@ namespace ConsoleApp.Business.Services
             _companyRepository.Add(companyType);
         }
 
-        public void Delete(string company)
+        public void Delete(string companyName)
         {
-            throw new NotImplementedException();
+            var company = _companyRepository.GetByName(companyName);
+
+            if (company == null)
+            {
+                throw new NotFoundException($"Company with a name - {companyName} not found.");
+            }
+
+            _companyRepository.Delete(company);
         }
 
         public List<Company> GetAll()
@@ -49,7 +56,14 @@ namespace ConsoleApp.Business.Services
 
         public Company GetById(int id)
         {
-            throw new NotImplementedException();
+            var company = _companyRepository.GetById(id);
+
+            if (company == null)
+            {
+                throw new NotFoundException($"Company with ID - {id} not found.");
+            }
+
+            return company;
         }
     }
 }

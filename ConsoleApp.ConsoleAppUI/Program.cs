@@ -61,7 +61,7 @@ while (true)
             switch (empMenuInput)
             {
                 case 1:
-                    employeeService.Create(dto);
+                    employeeService.Create(dto, 110);
                     break;
                 case 2:
                     employeeService.Delete(110);

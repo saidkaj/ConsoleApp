@@ -10,7 +10,7 @@ namespace ConsoleApp.DataAccess.Interfaces
 		void Update(T entity);
 
 
-		T? Get(int id);
+		T? GetById(int id);
 
 		List<T> GetAll();
 

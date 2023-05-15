@@ -23,7 +23,7 @@ namespace ConsoleApp.DataAccess.Implementations
             company.CompanyName = entity.CompanyName;
         }
 
-        public Company? Get(int id)
+        public Company? GetById(int id)
         {
             return DbContext.Companies.Find(comp => comp.CompanyId == id);
         }

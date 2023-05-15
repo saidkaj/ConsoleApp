@@ -17,7 +17,7 @@ namespace ConsoleApp.Business.Services
             _departmentRepository = new DepartmentRepository();
             _companyRepository = new CompanyRepository();
         }
-        public void Create(string departmentName, string company, int departmentLimit, int id)
+        public void Create(string departmentName, string company, int employeeLimit, int id)
         {
             var name = departmentName.Trim();
             if (string.IsNullOrWhiteSpace(name))
@@ -36,18 +36,44 @@ namespace ConsoleApp.Business.Services
                 throw new NotFoundException($"{company} - doesn't exist");
             }
 
-            if (departmentLimit < 2)
+            if (employeeLimit < 2)
             {
                 throw new LengthException(Helper.Errors["LengthException"]);
             }
 
-            Department department = new Department(departmentName, departmentLimit, companyt.CompanyId);
+            Department department = new Department(departmentName, employeeLimit, companyt.CompanyId);
             _departmentRepository.Add(department);
         }
 
         public void Delete(string depatmentName)
         {
-            throw new NotImplementedException();
+            var department = _departmentRepository.GetByName(depatmentName);
+
+            if (department == null)
+            {
+                throw new NotFoundException($"Department {depatmentName} not found.");
+            }
+
+            _departmentRepository.Delete(department);
+        }
+
+        public void Update(int departmentId, int employeeLimit)
+        {
+            var department = _departmentRepository.GetById(departmentId);
+
+            if (department == null)
+            {
+                throw new NotFoundException($"Department with ID - {departmentId} not found.");
+            }
+
+            if (employeeLimit < 2)
+            {
+                throw new LengthException(Helper.Errors["LengthException"]);
+            }
+
+            department.EmployeeLimit = employeeLimit;
+
+            _departmentRepository.Update(department);
         }
 
         public List<Department> GetAll()
@@ -57,17 +83,26 @@ namespace ConsoleApp.Business.Services
 
         public Department GetById(int id)
         {
-            throw new NotImplementedException();
+            var department = _departmentRepository.GetById(id);
+
+            if (department == null)
+            {
+                throw new NotFoundException($"Department with ID - {id} not found.");
+            }
+
+            return department;
         }
 
         public Department GetByName(string departmentName)
         {
-            throw new NotImplementedException();
-        }
+            var department = _departmentRepository.GetByName(departmentName);
 
-        public void Update(int id, int departmentLimit)
-        {
-            throw new NotImplementedException();
+            if (department == null)
+            {
+                throw new NotFoundException($"Department with name - {departmentName} not found.");
+            }
+
+            return department;
         }
     }
 }

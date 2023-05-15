@@ -24,7 +24,7 @@ namespace ConsoleApp.DataAccess.Implementations
             department.DepartmentName = entity.DepartmentName;
         }
 
-        public Department? Get(int id)
+        public Department? GetById(int id)
         {
             return DbContext.Departments.Find(emp => emp.DepartmentId == id);
         }

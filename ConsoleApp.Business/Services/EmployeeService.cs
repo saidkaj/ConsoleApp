@@ -10,14 +10,14 @@ namespace ConsoleApp.Business.Services
 {
     public class EmployeeService : IEmployeeService
     {
-        public EmployeeRepository employeeRepository { get; }
+        public EmployeeRepository _employeeRepository { get; }
 
-        public DepartmentRepository departmentRepository { get; }
+        public DepartmentRepository _departmentRepository { get; }
 
         public EmployeeService()
         {
-            employeeRepository = new();
-            departmentRepository = new();
+            _employeeRepository = new();
+            _departmentRepository = new();
         }
 
 
@@ -43,30 +43,47 @@ namespace ConsoleApp.Business.Services
                 }
             }
 
-            var department = departmentRepository.GetByName(employeeCreateDto.departmentName.Trim());
+            var department = _departmentRepository.GetByName(employeeCreateDto.departmentName.Trim());
             if (department == null)
             {
                 throw new NotFoundException($"{employeeCreateDto.departmentName} - doesn't exist");
             }
 
-            var count = employeeRepository.GetEmployeeByDepartmentId(department.DepartmentId).Count;
+            var count = _employeeRepository.GetEmployeeByDepartmentId(department.DepartmentId).Count;
             if (count >= department.EmployeeLimit)
             {
                 throw new CapacityNotEnoughException(Helper.Errors["CapacityNotEnoughException"]);
             }
 
             Employee employee = new Employee(name, surname, department.DepartmentId);
-            employeeRepository.Add(employee);
+            _employeeRepository.Add(employee);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var employee = _employeeRepository.GetById(id);
+
+            if (employee == null)
+            {
+                throw new NotFoundException($"Employee with ID - {id} not found.");
+            }
+
+            _employeeRepository.Delete(employee);
+        }
+
+        public void Update(int id, EmployeeCreateDto employeeCreateDto)
+        {
+            var employee = _employeeRepository.GetById(id);
+
+            if (employee == null)
+            {
+                throw new NotFoundException($"Employee with ID - {id} not found.");
+            }
         }
 
         public List<Employee> GetAll(int skip, int take)
         {
-            return employeeRepository.GetAll();
+            return _employeeRepository.GetAll();
         }
 
         public List<Employee> GetEmployeeByDepartmentId(int id)
@@ -76,15 +93,17 @@ namespace ConsoleApp.Business.Services
 
         public Employee GetEmployeeById(int id)
         {
-            throw new NotImplementedException();
+            var employee = _employeeRepository.GetById(id);
+
+            if (employee == null)
+            {
+                throw new NotFoundException($"Employee with ID - {id} not found.");
+            }
+
+            return employee;
         }
 
         public List<Employee> GetEmployeeByName(string name)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(int id, EmployeeCreateDto employeeCreateDto)
         {
             throw new NotImplementedException();
         }

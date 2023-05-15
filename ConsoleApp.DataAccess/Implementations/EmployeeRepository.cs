@@ -24,7 +24,7 @@ namespace ConsoleApp.DataAccess.Implementations
             emp.Surname = entity.Surname;
         }
 
-        public Employee? Get(int id)
+        public Employee? GetById(int id)
         {
             return DbContext.Employees.Find(emp => emp.EmployeeId == id);
         }
@@ -33,7 +33,7 @@ namespace ConsoleApp.DataAccess.Implementations
         {
             return DbContext.Employees;
         }
-
+                
         public Employee? GetByName(string name)
         {
             throw new NotImplementedException();
