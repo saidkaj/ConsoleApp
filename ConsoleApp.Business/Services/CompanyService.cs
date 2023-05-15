@@ -17,7 +17,7 @@ namespace ConsoleApp.Business.Services
             _companyRepository = new CompanyRepository();
         }
 
-        public void Create(string company)
+        public void Create(string company, int id)
         {
             var exist = _companyRepository.GetByName(company);
 

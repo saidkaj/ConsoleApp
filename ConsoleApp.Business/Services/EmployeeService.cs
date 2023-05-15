@@ -21,7 +21,7 @@ namespace ConsoleApp.Business.Services
         }
 
 
-        public void Create(EmployeeCreateDto employeeCreateDto)
+        public void Create(EmployeeCreateDto employeeCreateDto, int id)
         {
             var name = employeeCreateDto.name.Trim();
             if (string.IsNullOrWhiteSpace(name))

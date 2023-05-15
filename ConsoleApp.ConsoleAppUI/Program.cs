@@ -6,8 +6,9 @@ EmployeeService employeeService = new EmployeeService();
 DepartmentService departmentService = new DepartmentService();
 CompanyService companyService = new CompanyService();
 
+
 Console.WriteLine("Banking: ");
-companyService.Create("Banking");
+
 
 Console.WriteLine("Welcome ");
 MainMenu:
@@ -24,6 +25,9 @@ Console.WriteLine("Choose an operation: "
 
 int input;
 int empMenuInput;
+int depMenuInput;
+int compMenuInput;
+EmployeeCreateDto dto = new("Said", "Jahangirov", "It", 110);
 
 bool check = int.TryParse(Console.ReadLine(), out input);
 if (!check)
@@ -57,32 +61,25 @@ while (true)
             switch (empMenuInput)
             {
                 case 1:
-                    Console.WriteLine("Enter name: ");
-                    string empName = Console.ReadLine();
-                    Console.WriteLine("Enter surname: ");
-                    string empSurname = Console.ReadLine();
-                    Console.WriteLine("Enter department: ");
-                    string empDepName = Console.ReadLine();
-                    EmployeeCreateDto dto = new(empName, empSurname, empDepName);
                     employeeService.Create(dto);
                     break;
                 case 2:
-                    Console.WriteLine("Enter name: ");
+                    employeeService.Delete(110);
                     break;
                 case 3:
-                    Console.WriteLine("Menu 3");
+                    employeeService.Update(110, dto);
                     break;
                 case 4:
-                    Console.WriteLine("Menu 4");
+                    employeeService.GetAll(1, 10);
                     break;
                 case 5:
-                    Console.WriteLine("Menu 5");
+                    employeeService.GetEmployeeById(110);
                     break;
                 case 6:
-                    Console.WriteLine("Menu 6");
+                    employeeService.GetEmployeeByDepartmentId(0156);
                     break;
                 case 7:
-                    Console.WriteLine("Menu 7");
+                    employeeService.GetEmployeeByName("Said");
                     break;
                 case 8:
                     goto MainMenu;
@@ -92,11 +89,78 @@ while (true)
             #endregion
             break;
         case 2:
-
-            Console.WriteLine();
-
+            Console.WriteLine("\n"
+                + "1.Add department: "
+                + "\n"
+                + "2.Delete department: "
+                + "\n"
+                + "3.Update department: "
+                + "\n"
+                + "4.Show all departments: "
+                + "\n"
+                + "5.Show department by ID: "
+                + "\n"
+                + "6.Show department by name: "
+                + "\n"
+                + "7.Go back to main menu: ");
+            bool depMenuCheck = int.TryParse(Console.ReadLine(), out depMenuInput);
+            switch (depMenuInput)
+            {
+                case 1:
+                    departmentService.Create("IT", "UniBank", 30, 0156);
+                    break;
+                case 2:
+                    departmentService.Delete("IT");
+                    break;
+                case 3:
+                    departmentService.Update(0156, 30);
+                    break;
+                case 4:
+                    departmentService.GetAll();
+                    break;
+                case 5:
+                    departmentService.GetById(0156);
+                    break;
+                case 6:
+                    departmentService.GetByName("IT");
+                    break;
+                case 7:
+                    goto MainMenu;
+                default:
+                    break;
+            }
             break;
         case 3:
+            Console.WriteLine("\n"
+                + "1.Add company: "
+                + "\n"
+                + "2.Delete company: "
+                + "\n"
+                + "3.Show all companies: "
+                + "\n"
+                + "4.Show company by ID: "
+                + "\n"
+                + "5.Go back to main menu: ");
+            bool compMenuCheck = int.TryParse(Console.ReadLine(), out compMenuInput);
+            switch (compMenuInput)
+            {
+                case 1:
+                    companyService.Create("UniBank", 111);
+                    break;
+                case 2:
+                    companyService.Delete("UniBank");
+                    break;
+                case 3:
+                    companyService.GetAll();
+                    break;
+                case 4:
+                    companyService.GetById(111);
+                    break;
+                case 6:
+                    goto MainMenu;
+                default:
+                    break;
+            }
             break;
         case 4:
             System.Environment.Exit(500);

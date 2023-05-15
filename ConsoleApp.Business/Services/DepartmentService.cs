@@ -17,7 +17,7 @@ namespace ConsoleApp.Business.Services
             _departmentRepository = new DepartmentRepository();
             _companyRepository = new CompanyRepository();
         }
-        public void Create(string departmentName, string company, int departmentLimit)
+        public void Create(string departmentName, string company, int departmentLimit, int id)
         {
             var name = departmentName.Trim();
             if (string.IsNullOrWhiteSpace(name))

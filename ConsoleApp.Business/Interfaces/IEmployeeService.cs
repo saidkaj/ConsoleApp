@@ -6,7 +6,7 @@ namespace ConsoleApp.Business.Interfaces
 {
 	public interface IEmployeeService
 	{
-		void Create(EmployeeCreateDto employeeCreateDto);
+		void Create(EmployeeCreateDto employeeCreateDto, int employeeId);
 		void Delete(int id);
 		void Update(int id, EmployeeCreateDto employeeCreateDto);
 

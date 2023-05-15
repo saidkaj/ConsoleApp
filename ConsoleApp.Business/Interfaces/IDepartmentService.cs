@@ -4,7 +4,7 @@ namespace ConsoleApp.Business.Services
 {
 	public interface IDepartmentService
 	{
-		void Create(string departmentName, string company, int departmentLimit);
+		void Create(string departmentName, string company, int departmentLimit, int id);
 
 		void Delete(string depatmentName);
 
